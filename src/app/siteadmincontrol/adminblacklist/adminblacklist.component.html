@@ -1,0 +1,25 @@
+<h2>black list</h2>
+<h3 class="subH2">--add one player in black list</h3>
+<form #addBlackListForm = "ngForm">
+    <label>email hacker</label> <input type="text" name="email" ngModel pattern="^[a-z0-9]+@gmail.com$" placeholder="ex: test@gamil.com" required><br>
+    <label>pubg id hacker : </label> <input type="text" ngModel pattern="^[0-9]+$" minlength="7"
+      maxlength="15" placeholder="ex: 7 to 15 number" required name="pubgId">
+    <button (click)="addBlackListToServer(addBlackListForm)" [disabled]="addBlackListForm.invalid || disableButton == true">add black list to server</button><br>
+    <p>message : <span>{{messageBlackList}}</span></p>
+</form>
+<hr>
+<h3 class="subH2">--get all black list</h3>
+<button (click)="getBlackList()" [disabled]="disableButton == true">get black list</button><br>
+<p>number of players in black list is : <span>{{numberBlackList}}</span></p>
+<p>note you can see the black list data in console</p>
+<hr style="color: black;">
+<h3 class="subH2">--delete one player in black list depend on _id</h3>
+<form #deleteBlackListForm = "ngForm">
+    <label>id of black list :  </label> <input type="text" name="_id" ngModel required><br>
+    <button (click)="deleteBlackList(deleteBlackListForm)" [disabled]="deleteBlackListForm.invalid || disableButton == true">delete black list</button><br>
+    <p>message : <span>{{messageDeleteBlackList}}</span></p>
+</form>
+<hr style="color: black;">
+<h2 class="subH2">--open disable button</h2>
+<button class="subH3" (click)="openButtons()">open buttons</button><br>
+<label>confirm request </label> <input type="text" [(ngModel)] ="confirmRequest" name="confirmRequest"><br>
